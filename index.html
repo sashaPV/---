@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фитнес-дневник</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>🏋️‍♂️ Фитнес-дневник</h2>
+    
+    <form id="workoutForm">
+        <div class="input-group">
+            <label>Упражнение:</label>
+            <input type="text" id="exName" placeholder="Например: Приседания" required>
+        </div>
+        
+        <div class="input-group">
+            <label>Группа мышц:</label>
+            <select id="exMuscle">
+                <option value="Ноги">Ноги</option>
+                <option value="Грудь">Грудь</option>
+                <option value="Спина">Спина</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label>Подходы и повторения:</label>
+            <input type="text" id="exDetails" placeholder="Например: 4 по 12" required>
+        </div>
+        
+        <button type="submit">Добавить упражнение</button>
+    </form>
+
+    <div class="filter-group">
+        <label>Фильтр по группам мышц:</label>
+        <select id="filterSelect" onchange="filterExercises()">
+            <option value="Все">Показать все</option>
+            <option value="Ноги">Ноги</option>
+            <option value="Грудь">Грудь</option>
+            <option value="Спина">Спина</option>
+        </select>
+    </div>
+
+    <h3>Моя тренировка:</h3>
+    <div id="exerciseList"></div>
+</div>
+
+<script>
+    const form = document.getElementById('workoutForm');
+    const list = document.getElementById('exerciseList');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('exName').value;
+        const muscle = document.getElementById('exMuscle').value;
+        const details = document.getElementById('exDetails').value;
+
+        const item = document.createElement('div');
+        item.className = 'workout-item';
+        item.setAttribute('data-muscle', muscle);
+
+        item.innerHTML = `
+            <div>
+                <span class="badge">${muscle}</span>
+                <div class="item-name">${name}</div>
+            </div>
+            <span class="item-details">${details}</span>
+        `;
+
+        list.appendChild(item);
+        form.reset();
+        
+        document.getElementById('filterSelect').value = 'Все';
+        filterExercises();
+    });
+
+    function filterExercises() {
+        const selectedMuscle = document.getElementById('filterSelect').value;
+        const items = list.getElementsByClassName('workout-item');
+
+        for (let i = 0; i < items.length; i++) {
+            const itemMuscle = items[i].getAttribute('data-muscle');
+
+            if (selectedMuscle === 'Все' || itemMuscle === selectedMuscle) {
+                items[i].style.display = 'flex';
+            } else {
+                items[i].style.display = 'none';
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

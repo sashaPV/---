@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: lavenderblush;
+    padding: 20px;
+}
+
+.container {
+    max-width: 500px;
+    background: white;
+    padding: 25px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px lightpink;
+}
+
+h2 {
+    color: deeppink;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: mediumvioletred;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border: 1px solid pink;
+    border-radius: 6px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: deeppink;
+}
+
+button {
+    background-color: deeppink;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: mediumvioletred;
+}
+
+.filter-group {
+    margin: 25px 0;
+    padding: 15px 0;
+    border-top: 2px dashed pink;
+    border-bottom: 2px dashed pink;
+}
+
+.workout-item {
+    background: snow;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border-left: 5px solid deeppink;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.badge {
+    background-color: pink;
+    color: mediumvioletred;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.item-name {
+    font-weight: bold;
+    margin-top: 4px;
+    color: black;
+}
+
+.item-details {
+    color: gray;
+    font-size: 14px;
+}
